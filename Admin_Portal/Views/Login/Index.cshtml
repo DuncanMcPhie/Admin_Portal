@@ -1,0 +1,61 @@
+﻿@model Admin_Portal.Data.LoginAttempt
+
+<link href="/Content/font-awesome.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Auth", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>&nbsp;</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "UserName", @autocapitalize = "off" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group" style="width: 260px;">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @style = "width: 240px", @placeholder = "Password", @type = "password" } })
+                    <span id="eye-btn" class="input-group-addon eye-btn"><i id="eye" class="fa fa-eye-slash"></i></span>
+                </div>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //$('#Password').removeClass('text-box single-line password');
+            $('.eye-btn').bind('mousedown touchstart', function show() {
+                //Change the attribute to text
+                $(this).prev("input:password").attr('type', 'text');
+                $(":first-child", this).removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+            });
+            $('.eye-btn').bind('mouseup touchend', function () {
+                //Change the attribute back to password
+                $(this).prev("input:text").attr('type', 'password');
+                $(":first-child", this).removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+            });
+        });
+    </script>
+
+}
+
+@*</div>*@

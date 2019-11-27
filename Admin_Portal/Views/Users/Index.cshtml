@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Admin_Portal.Data.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style type="text/css">
+    .white {
+        background-color: white;
+    }
+
+    .top {
+        background-color: antiquewhite;
+    }
+</style>
+
+    <h2>Users</h2>
+
+
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </p>
+
+    <p>
+
+        @using (Html.BeginForm("Search", "Users", FormMethod.Get))
+        {
+        <p>
+            @Html.DropDownList("searchtype", new SelectList(new[] { "UserName", "FirstName", "LastName" }))
+            @Html.DropDownList("searchop", new SelectList(new[] { "Starts With", "Contains", "Ends With" })):
+            @Html.TextBox("searchtxt")
+            <input type="submit" value="Filter" />
+        </p>
+    }
+        </p>
+
+        <table class="table">
+            <tr class="top">
+                <th>
+                    @Html.DisplayName("First Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Username")
+                </th>
+                <th>
+                    @Html.DisplayName("Last Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Email Address")
+                </th>
+                <th>
+                    @Html.DisplayName("Expiration Date")
+                </th>
+                <th>
+                    @Html.DisplayName("Birth Date")
+                </th>
+                <th>
+                    @Html.DisplayName("User Type")
+                </th>
+                <th>
+                    @Html.DisplayName("Role")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="white">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.First_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Last_Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Exp_Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birth_Date)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.User_Type)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </th>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @if (ViewBag.FromSearch)
+        {
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
