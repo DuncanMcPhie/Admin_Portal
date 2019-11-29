@@ -15,50 +15,50 @@ namespace Admin_Portal.Data
             _connection = constr;
         }
 
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<Admin> GetAdmins()
         {
-            return GetItems<User>("SELECT * FROM user");
+            return GetItems<Admin>("SELECT * FROM admin");
         }
 
-        public IEnumerable<User> SearchUsers(string type, string op, string searchtext)
+        public IEnumerable<Admin> SearchAdmins(string type, string op, string searchtext)
         {
-            var sql = "SELECT * FROM user WHERE {0} LIKE @search";
+            var sql = "SELECT * FROM admin WHERE {0} LIKE @search";
             var field = "";
             switch (type)
             {
-                case "UserName": field = "UserID"; break;
-                default: field = "UserID"; break;
+                case "AdminName": field = "Email"; break;
+                default: field = "Email"; break;
             }
             var ops = op == "Starts With" ? searchtext + "%" : op == "Contains" ? "%" + searchtext + "%" : "%" + searchtext;
-            return GetItems<User>(String.Format(sql, field), new { search = ops});
+            return GetItems<Admin>(String.Format(sql, field), new { search = ops});
         }
 
-        public User GetUser(String userid)
+        public Admin GetAdmin(String Email)
         {
-            return GetItems<User>("SELECT * FROM admins WHERE userid = @Email", new { Email = userid }).FirstOrDefault();
+            return GetItems<Admin>("SELECT * FROM admin WHERE Email = @Email", new { Email = Email }).FirstOrDefault();
         }
 
-        public void SaveUser(User user)
+        public void SaveAdmin(Admin admin)
         {
 
             var sql = @"
-            UPDATE user
-            SET UserID = @UserID,
+            UPDATE admin
+            SET AdminID = @AdminID,
             Email = @Email,
             Password = @Password,
-            User_Type = @User_Type
-            WHERE UserID = @UserID;";
+            Admin_Type = @Admin_Type
+            WHERE AdminID = @AdminID;";
 
-            Execute (sql, user);
+            Execute (sql, admin);
         }
 
-        public void AddUser(User user)
+        public void AddAdmin(Admin admin)
         {
             var sql = @"
-            INSERT user (UserID, Email, Password, User_Type)
-            VALUES (@UserID, @Email, @Password, @User_Type)";
+            INSERT admin (AdminID, Email, Password, Admin_Type)
+            VALUES (@AdminID, @Email, @Password, @Admin_Type)";
 
-            Execute(sql, user);
+            Execute(sql, admin);
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////

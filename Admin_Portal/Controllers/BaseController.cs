@@ -18,19 +18,19 @@ namespace Admin_Portal.Controllers
             base.Initialize(requestContext);
             if(requestContext.HttpContext.Request.IsAuthenticated)
             {
-                var currentUser = requestContext.HttpContext.User;
+                var currentAdmin = requestContext.HttpContext.User;
                 var name = requestContext.HttpContext.User.Identity.Name;
-                User user = null;
+                Admin admin = null;
 
-                user = repository.GetUser(name);
+                admin = repository.GetAdmin(name);
 
-                if(user == null)
+                if(admin == null)
                 {
-                    user = new User { UserID = 00000, User_Type = "Unknown" };
+                    admin = new Admin { AdminID = 00000, Admin_Type = "Unknown" };
                 }
 
-                user.Attach(currentUser);
-                HttpContext.User = user;
+                admin.Attach(currentAdmin);
+                HttpContext.User = admin;
             }
         }
     }

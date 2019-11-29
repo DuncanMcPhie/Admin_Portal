@@ -4,52 +4,52 @@ using Admin_Portal.Data;
 namespace Admin_Portal.Controllers
 {
     [Authorize(Roles = "Super Admin")]
-    public class UsersController : BaseController
+    public class AdminsController : BaseController
     {
-        // GET: Users
+        // GET: Admins
         public ActionResult Index()
         {
-            ViewBag.Message = "Your users page.";
+            ViewBag.Message = "Your admins page.";
             ViewBag.FromSearch = false;
-            var users = repository.GetUsers();
-            return View(users);
+            var admins = repository.GetAdmins();
+            return View(admins);
         }
 
         public ActionResult Search(string searchtype, string searchop, string searchtxt)
         {
             ViewBag.FromSearch = true;
-            var users = repository.SearchUsers(searchtype, searchop, searchtxt);
-            return View("Index", users);
+            var admins = repository.SearchAdmins(searchtype, searchop, searchtxt);
+            return View("Index", admins);
         }
 
         public ActionResult Edit(string Email)
         {
-            return View(repository.GetUser(Email));
+            return View(repository.GetAdmin(Email));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(User user, FormCollection collection)
+        public ActionResult Edit(Admin admin, FormCollection collection)
         {
             var password = collection["NewPassword"];
             if(!string.IsNullOrEmpty(password))
             {
-                user.Password = password;
+                admin.Password = password;
             }
-            repository.SaveUser(user);
+            repository.SaveAdmin(admin);
             return RedirectToAction("Index");
         }
 
         public ActionResult Create()
         {
-            return View(new User());
+            return View(new Admin());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
+        public ActionResult Create(Admin admin)
         {
-            repository.AddUser(user);
+            repository.AddAdmin(admin);
             return RedirectToAction("Index");
         }
     }

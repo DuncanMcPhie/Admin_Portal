@@ -137,12 +137,12 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Data\Login.cs" />
     <Compile Include="Data\LoginAttempt.cs" />
     <Compile Include="Data\HtmlHelperExt.cs" />
     <Compile Include="Data\AdminRepository.cs" />
-    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\Admin.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,9 +190,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

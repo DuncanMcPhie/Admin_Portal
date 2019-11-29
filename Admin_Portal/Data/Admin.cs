@@ -8,15 +8,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Admin_Portal.Data
 {
-    public class User : IPrincipal, IIdentity
+    public class Admin : IPrincipal, IIdentity
     {
         static readonly string _prefix = @"^|#|^";
         string _password = "";
         IPrincipal _principal;
 
 
-        [Required(ErrorMessage = "User ID is required")]
-        public int UserID { get; set; }
+        [Required(ErrorMessage = "Admin ID is required")]
+        public int AdminID { get; set; }
 
         [Required(ErrorMessage = "Email Address is required")]
         public string Email { get; set; }
@@ -25,7 +25,7 @@ namespace Admin_Portal.Data
         [Required(ErrorMessage = "Password is required")]
         public string Password { get { return _password; } set { _password = Hash(value); } }
 
-        public string User_Type { get; set; }
+        public string Admin_Type { get; set; }
 
 
         [JsonIgnore]
@@ -90,7 +90,7 @@ namespace Admin_Portal.Data
 
         public bool IsInRole(string Roles)
         {
-            return this.User_Type.ToString() == Roles;
+            return this.Admin_Type.ToString() == Roles;
         }
     }
 }
