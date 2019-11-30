@@ -3,7 +3,7 @@ using Admin_Portal.Data;
 
 namespace Admin_Portal.Controllers
 {
-    [Authorize(Roles = "Super Admin")]
+    [Authorize(Roles = "Super")]
     public class AdminsController : BaseController
     {
         // GET: Admins
@@ -11,20 +11,20 @@ namespace Admin_Portal.Controllers
         {
             ViewBag.Message = "Your admins page.";
             ViewBag.FromSearch = false;
-            var admins = repository.GetAdmins();
+            var admins = arepository.GetAdmins();
             return View(admins);
         }
 
         public ActionResult Search(string searchtype, string searchop, string searchtxt)
         {
             ViewBag.FromSearch = true;
-            var admins = repository.SearchAdmins(searchtype, searchop, searchtxt);
+            var admins = arepository.SearchAdmins(searchtype, searchop, searchtxt);
             return View("Index", admins);
         }
 
-        public ActionResult Edit(string Email)
+        public ActionResult Edit(string AdminID)
         {
-            return View(repository.GetAdmin(Email));
+            return View(arepository.GetAdmin(AdminID));
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace Admin_Portal.Controllers
             {
                 admin.Password = password;
             }
-            repository.SaveAdmin(admin);
+            arepository.SaveAdmin(admin);
             return RedirectToAction("Index");
         }
 
@@ -49,7 +49,7 @@ namespace Admin_Portal.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Admin admin)
         {
-            repository.AddAdmin(admin);
+            arepository.AddAdmin(admin);
             return RedirectToAction("Index");
         }
     }

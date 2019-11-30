@@ -21,20 +21,21 @@
                 </div>
                 <div class="navbar-collapse collapse">
 
-                    @if ((User as Admin_Portal.Data.Admin) != null && (User as Admin_Portal.Data.Admin).IsInRole("Super Admin"))
+                    @if ((User as Admin_Portal.Data.Admin) != null && (User as Admin_Portal.Data.Admin).IsInRole("Super"))
                     {
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Admins <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Create Admin", "Create", "Admins")</li>
-                                    <li>@Html.ActionLink("Edit Admin", "Edit", "Admins")</li>
+                                    <li>@Html.ActionLink("Admin List", "Index", "Admins")</li>
                                 </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Links <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Manage Links", "Index", "Manage Links")</li>
+                                    <li>@Html.ActionLink("Create Link", "Create", "Links")</li>
+                                    <li>@Html.ActionLink("Links List", "Index", "Links")</li>
                                 </ul>
                             </li>
                         </ul>
@@ -43,7 +44,7 @@
                     {
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, @((User as Admin_Portal.Data.Admin).Admin_Type) <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, @((User as Admin_Portal.Data.Admin).Admin_Type) Admin<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li role="separator" class="divider"></li>
                                     <li>@Html.ActionLink("Sign Out", "SignOut", "Login")</li>

@@ -11,7 +11,8 @@ namespace Admin_Portal.Controllers
 {
     public class BaseController : Controller
     {
-        protected AdminRepository repository = new AdminRepository(cfg.AppSettings["mysqlconnection"]);
+        protected AdminRepository arepository = new AdminRepository(cfg.AppSettings["mysqlconnection"]);
+        protected LinkRepository lrepository = new LinkRepository(cfg.AppSettings["mysqlconnection"]);
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -22,11 +23,11 @@ namespace Admin_Portal.Controllers
                 var name = requestContext.HttpContext.User.Identity.Name;
                 Admin admin = null;
 
-                admin = repository.GetAdmin(name);
+                admin = arepository.GetAdmin(name);
 
                 if(admin == null)
                 {
-                    admin = new Admin { AdminID = 00000, Admin_Type = "Unknown" };
+                    admin = new Admin { AdminID = "00000", Admin_Type = "Unknown" };
                 }
 
                 admin.Attach(currentAdmin);

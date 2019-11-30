@@ -6,7 +6,7 @@
 /* Background, Footer and Header - THESE ARE THE SAME FOR EVERY PAGE */
 
 .Background {
-    background-color: darkred;
+    background-color: lightblue;
     opacity: 0.4;
     position: absolute;
     width: 100%;

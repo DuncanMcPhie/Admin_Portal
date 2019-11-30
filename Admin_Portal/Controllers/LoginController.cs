@@ -18,7 +18,7 @@ namespace Admin_Portal.Controllers
         [HttpPost]
         public ActionResult Auth(LoginAttempt login)
         {
-            var admin = repository.GetAdmin(login.Email);
+            var admin = arepository.GetAdmin(login.Email);
             if (admin == null || String.IsNullOrEmpty(admin.Email))
             {
                 // invalid username

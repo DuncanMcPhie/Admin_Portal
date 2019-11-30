@@ -134,10 +134,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LinksController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Data\Link.cs" />
+    <Compile Include="Data\LinkRepository.cs" />
     <Compile Include="Data\Login.cs" />
     <Compile Include="Data\LoginAttempt.cs" />
     <Compile Include="Data\HtmlHelperExt.cs" />
@@ -194,6 +197,9 @@
     <Content Include="Views\Admins\Edit.cshtml" />
     <Content Include="Views\Admins\Create.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Links\Create.cshtml" />
+    <Content Include="Views\Links\Edit.cshtml" />
+    <Content Include="Views\Links\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

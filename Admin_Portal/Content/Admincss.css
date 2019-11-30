@@ -8,7 +8,7 @@
     }
 
 .Background {
-    background-color: darkred;
+    background-color: lightblue;
     opacity: 0.8;
     position: fixed;
     width: 100%;
@@ -73,6 +73,7 @@
 }
 
 .everything {
+    background-color: lightblue;
     position: absolute;
     z-index: 100;
     top: 20%;
@@ -85,6 +86,7 @@
 }
 
 .everything2 {
+    background-color: lightblue;
     position: absolute;
     z-index: 100;
     top: 8%;
@@ -97,6 +99,7 @@
 }
 
 .everything3 {
+    background-color: lightblue;
     position: absolute;
     z-index: 100;
     top: 10%;
@@ -109,6 +112,7 @@
     }
 
 .everything4 {
+    background-color: lightblue;
     position: absolute;
     z-index: 100;
     top: 10%;
@@ -121,6 +125,7 @@
     }
 
 .everything5 {
+    background-color: lightblue;
     position: absolute;
     z-index: 100;
     top: 10%;

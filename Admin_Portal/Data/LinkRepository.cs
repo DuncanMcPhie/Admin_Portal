@@ -6,57 +6,56 @@ using System.Linq;
 
 namespace Admin_Portal.Data
 {
-    public class AdminRepository
+    public class LinkRepository
     {
         private string _connection;
 
-        public AdminRepository(string constr)
+        public LinkRepository(string constr)
         {
             _connection = constr;
         }
 
-        public IEnumerable<Admin> GetAdmins()
+        public IEnumerable<Link> GetLink()
         {
-            return GetItems<Admin>("SELECT * FROM admin");
+            return GetItems<Link>("SELECT * FROM links");
         }
 
-        public IEnumerable<Admin> SearchAdmins(string type, string op, string searchtext)
+        public IEnumerable<Link> SearchLinks(string type, string op, string searchtext)
         {
-            var sql = "SELECT * FROM admin WHERE {0} LIKE @search";
+            var sql = "SELECT * FROM links WHERE {0} LIKE @search";
             var field = "";
             switch (type)
             {
-                case "AdminName": field = "Email"; break;
-                default: field = "Email"; break;
+                case "LinkName": field = "Link_Name"; break;
+                default: field = "Link_Name"; break;
             }
             var ops = op == "Starts With" ? searchtext + "%" : op == "Contains" ? "%" + searchtext + "%" : "%" + searchtext;
-            return GetItems<Admin>(String.Format(sql, field), new { search = ops});
+            return GetItems<Link>(String.Format(sql, field), new { search = ops});
         }
 
-        public Admin GetAdmin(string Email)
+        public Link GetLink(int LinkID)
         {
-            return GetItems<Admin>("SELECT * FROM admin WHERE Email = @Email", new { Email = Email }).FirstOrDefault();
+            return GetItems<Link>("SELECT * FROM admin WHERE LinkID = @LinkID", new { LinkID = LinkID }).FirstOrDefault();
         }
 
-        public void SaveAdmin(Admin admin)
-        {
-            var sql = @"
-            UPDATE admin
-            SET Email = @Email,
-            Password = @Password,
-            Admin_Type = @Admin_Type
-            WHERE AdminID = @AdminID;";
-
-            Execute (sql, admin);
-        }
-
-        public void AddAdmin(Admin admin)
+        public void SaveLink(Link link)
         {
             var sql = @"
-            INSERT admin (Email, Password, Admin_Type)
-            VALUES (@Email, @Password, @Admin_Type)";
+            UPDATE links
+            SET Link_Name = @Link_Name,
+            Link_Type = @Link_Type
+            WHERE LinkID = @LinkID;";
 
-            Execute(sql, admin);
+            Execute (sql, link);
+        }
+
+        public void AddLink(Link link)
+        {
+            var sql = @"
+            INSERT links (Link_Name, Link_Type)
+            VALUES (@Link_Name, @Link_Type)";
+
+            Execute(sql, link);
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -38,8 +38,8 @@
         <div class="form-group">
             @Html.Label("New Password", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.Editor("New Password", new { htmlAttributes = new { @class = "form-control", @placeholder = "New Password Only" } })
-                @Html.ValidationMessage("New Password", "", new { @class = "text-danger" })
+                @Html.Editor("NewPassword", new { htmlAttributes = new { @class = "form-control", @placeholder = "New Password" } })
+                @Html.ValidationMessage("NewPassword", "", new { @class = "text-danger" })
             </div>
         </div>
 

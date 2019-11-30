@@ -16,7 +16,7 @@ namespace Admin_Portal.Data
 
 
         [Required(ErrorMessage = "Admin ID is required")]
-        public int AdminID { get; set; }
+        public string AdminID { get; set; }
 
         [Required(ErrorMessage = "Email Address is required")]
         public string Email { get; set; }
@@ -37,7 +37,7 @@ namespace Admin_Portal.Data
         public IIdentity Identity => _principal.Identity;
 
         [JsonIgnore]
-        public string Name => Email; // Identity.Name;
+        public string Name => AdminID; // Identity.Name;
 
         public void Attach(IPrincipal existingPrincipal)
         {
@@ -48,6 +48,10 @@ namespace Admin_Portal.Data
 
         private string Hash(string pwd)
         {
+            if (pwd == null)
+            {
+                pwd = "pass";
+            }
             if (pwd.StartsWith(_prefix)) // don't do re-encrypt when instantiating from the database, deserializing
                 return pwd;
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Admin_Portal.Data.Admin>
+﻿@model IEnumerable<Admin_Portal.Data.Link>
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +18,7 @@
     }
 </style>
 
-    <h2>Admins</h2>
+    <h2>Links</h2>
 
 
 
@@ -28,24 +28,23 @@
 
     <p>
 
-        @using (Html.BeginForm("Search", "Admins", FormMethod.Get))
+        @using (Html.BeginForm("Search", "Links", FormMethod.Get))
         {
         <p>
-            @Html.DropDownList("searchtype", new SelectList(new[] { "AdminID","Email","Admin_Type" }))
+            @Html.DropDownList("searchtype", new SelectList(new[] { "Link_Name","Link_Type" }))
             @Html.DropDownList("searchop", new SelectList(new[] { "Starts With", "Contains", "Ends With" })):
             @Html.TextBox("searchtxt")
             <input type="submit" value="Filter" />
         </p>
     }
-        </p>
 
         <table class="table">
             <tr class="top">
                 <th>
-                    @Html.DisplayName("Email Address")
+                    @Html.DisplayName("Link Name")
                 </th>
                 <th>
-                    @Html.DisplayName("Admin_Type")
+                    @Html.DisplayName("Link Type")
                 </th>
                 <th>
                     @Html.DisplayName("Edit")
@@ -57,13 +56,13 @@
             {
                 <tr class="white">
                     <td>
-                        @Html.DisplayFor(modelItem => item.Email)
+                        @Html.DisplayFor(modelItem => item.Link_Name)
                     </td>
                     <th>
-                        @Html.DisplayFor(modelItem => item.Admin_Type)
+                        @Html.DisplayFor(modelItem => item.Link_Type)
                     </th>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.AdminID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.LinkID }, new { @class = "btn btn-primary" })
                     </td>
                 </tr>
             }
