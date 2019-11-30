@@ -43,8 +43,7 @@ namespace Admin_Portal.Data
 
             var sql = @"
             UPDATE admin
-            SET AdminID = @AdminID,
-            Email = @Email,
+            SET Email = @Email,
             Password = @Password,
             Admin_Type = @Admin_Type
             WHERE AdminID = @AdminID;";
@@ -55,8 +54,8 @@ namespace Admin_Portal.Data
         public void AddAdmin(Admin admin)
         {
             var sql = @"
-            INSERT admin (AdminID, Email, Password, Admin_Type)
-            VALUES (@AdminID, @Email, @Password, @Admin_Type)";
+            INSERT admin (Email, Password, Admin_Type)
+            VALUES (@Email, @Password, @Admin_Type)";
 
             Execute(sql, admin);
         }

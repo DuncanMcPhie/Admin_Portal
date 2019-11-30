@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Admin_Portal.Data.User>
+﻿@model IEnumerable<Admin_Portal.Data.Admin>
 
 @{
     ViewBag.Title = "Index";
@@ -14,7 +14,7 @@
     }
 </style>
 
-    <h2>Users</h2>
+    <h2>Admins</h2>
 
 
 
@@ -24,10 +24,10 @@
 
     <p>
 
-        @using (Html.BeginForm("Search", "Users", FormMethod.Get))
+        @using (Html.BeginForm("Search", "Admins", FormMethod.Get))
         {
         <p>
-            @Html.DropDownList("searchtype", new SelectList(new[] { "UserName", "FirstName", "LastName" }))
+            @Html.DropDownList("searchtype", new SelectList(new[] { "AdminID","Email" }))
             @Html.DropDownList("searchop", new SelectList(new[] { "Starts With", "Contains", "Ends With" })):
             @Html.TextBox("searchtxt")
             <input type="submit" value="Filter" />
@@ -38,25 +38,10 @@
         <table class="table">
             <tr class="top">
                 <th>
-                    @Html.DisplayName("First Name")
-                </th>
-                <th>
-                    @Html.DisplayName("Username")
-                </th>
-                <th>
-                    @Html.DisplayName("Last Name")
-                </th>
-                <th>
                     @Html.DisplayName("Email Address")
                 </th>
                 <th>
-                    @Html.DisplayName("Expiration Date")
-                </th>
-                <th>
-                    @Html.DisplayName("Birth Date")
-                </th>
-                <th>
-                    @Html.DisplayName("User Type")
+                    @Html.DisplayName("Admin_Type")
                 </th>
                 <th>
                     @Html.DisplayName("Role")
@@ -68,31 +53,13 @@
             {
                 <tr class="white">
                     <td>
-                        @Html.DisplayFor(modelItem => item.First_Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Last_Name)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.Email)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Exp_Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Birth_Date)
-                    </td>
                     <th>
-                        @Html.DisplayFor(modelItem => item.User_Type)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.Role)
+                        @Html.DisplayFor(modelItem => item.Admin_Type)
                     </th>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Edit", "Edit", new { id = item.AdminID }, new { @class = "btn btn-primary" })
                     </td>
                 </tr>
             }
