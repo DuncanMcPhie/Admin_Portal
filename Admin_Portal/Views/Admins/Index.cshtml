@@ -31,13 +31,13 @@
         @using (Html.BeginForm("Search", "Admins", FormMethod.Get))
         {
         <p>
-            @Html.DropDownList("searchtype", new SelectList(new[] { "AdminID","Email","Admin_Type" }))
+            @Html.DropDownList("searchtype", new SelectList(new[] { "Email","Admin Type" }))
             @Html.DropDownList("searchop", new SelectList(new[] { "Starts With", "Contains", "Ends With" })):
             @Html.TextBox("searchtxt")
             <input type="submit" value="Filter" />
         </p>
-    }
-        </p>
+        }
+    </p>
 
         <table class="table">
             <tr class="top">

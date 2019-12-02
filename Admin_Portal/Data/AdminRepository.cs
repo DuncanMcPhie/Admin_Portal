@@ -27,6 +27,7 @@ namespace Admin_Portal.Data
             switch (type)
             {
                 case "AdminName": field = "Email"; break;
+                case "Admin Type": field = "Admin_Type"; break;
                 default: field = "Email"; break;
             }
             var ops = op == "Starts With" ? searchtext + "%" : op == "Contains" ? "%" + searchtext + "%" : "%" + searchtext;

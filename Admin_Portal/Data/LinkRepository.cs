@@ -26,7 +26,8 @@ namespace Admin_Portal.Data
             var field = "";
             switch (type)
             {
-                case "LinkName": field = "Link_Name"; break;
+                case "Link Name": field = "Link_Name"; break;
+                case "Link Type": field = "Link_Type"; break;
                 default: field = "Link_Name"; break;
             }
             var ops = op == "Starts With" ? searchtext + "%" : op == "Contains" ? "%" + searchtext + "%" : "%" + searchtext;

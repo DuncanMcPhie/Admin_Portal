@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Admin_Portal.Data.Link>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Redirects";
 }
 
 <style type="text/css">
@@ -20,24 +20,6 @@
 
     <h2>Links</h2>
 
-
-
-    <p>
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
-    </p>
-
-    <p>
-
-        @using (Html.BeginForm("Search", "Links", FormMethod.Get))
-        {
-        <p>
-            @Html.DropDownList("searchtype", new SelectList(new[] { "Link Name", "Link Type" }))
-            @Html.DropDownList("searchop", new SelectList(new[] { "Starts With", "Contains", "Ends With" })):
-            @Html.TextBox("searchtxt")
-            <input type="submit" value="Filter" />
-        </p>
-    }
-
         <table class="table">
             <tr class="top">
                 <th>
@@ -47,13 +29,14 @@
                     @Html.DisplayName("Link Type")
                 </th>
                 <th>
-                    @Html.DisplayName("Edit")
+                    @Html.DisplayName("Redirect")
                 </th>
                 <th></th>
             </tr>
 
             @foreach (var item in Model)
             {
+                if()
                 <tr class="white">
                     <td>
                         @Html.DisplayFor(modelItem => item.Link_Name)
@@ -62,16 +45,9 @@
                         @Html.DisplayFor(modelItem => item.Link_Type)
                     </th>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.LinkID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Redirect", "Redirects", "Links", new { @class = "btn btn-primary" })
                     </td>
                 </tr>
             }
 
         </table>
-
-        @if (ViewBag.FromSearch)
-        {
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
-        }
