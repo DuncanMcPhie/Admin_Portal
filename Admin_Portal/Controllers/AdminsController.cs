@@ -22,9 +22,9 @@ namespace Admin_Portal.Controllers
             return View("Index", admins);
         }
 
-        public ActionResult Edit(string AdminID)
+        public ActionResult Edit(int id)
         {
-            return View(arepository.GetAdmin(AdminID));
+            return View(arepository.GetAdmin(id));
         }
 
         [HttpPost]
@@ -32,10 +32,6 @@ namespace Admin_Portal.Controllers
         public ActionResult Edit(Admin admin, FormCollection collection)
         {
             var password = collection["NewPassword"];
-            if(!string.IsNullOrEmpty(password))
-            {
-                admin.Password = password;
-            }
             arepository.SaveAdmin(admin);
             return RedirectToAction("Index");
         }

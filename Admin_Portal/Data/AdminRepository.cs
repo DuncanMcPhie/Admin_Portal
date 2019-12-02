@@ -39,6 +39,11 @@ namespace Admin_Portal.Data
             return GetItems<Admin>("SELECT * FROM admin WHERE Email = @Email", new { Email = Email }).FirstOrDefault();
         }
 
+        public Admin GetAdmin(int id)
+        {
+            return GetItems<Admin>("SELECT * FROM admin WHERE AdminID = @id", new { id = id }).FirstOrDefault();
+        }
+
         public void SaveAdmin(Admin admin)
         {
             var sql = @"

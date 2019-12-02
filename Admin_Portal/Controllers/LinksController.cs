@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Admin_Portal.Data;
+using System.Security.Principal;
 
 namespace Admin_Portal.Controllers
 {
@@ -22,9 +23,16 @@ namespace Admin_Portal.Controllers
             return View("Index", links);
         }
 
-        public ActionResult Edit(int LinkID)
+        public ActionResult List(IPrincipal user)
         {
-            return View(lrepository.GetLink(LinkID));
+            ViewBag.Redirects = true;
+            var links = lrepository.ListLinks("Starts With", user);
+            return View("Redirects", links);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View(lrepository.GetLink(id));
         }
 
         [HttpPost]
