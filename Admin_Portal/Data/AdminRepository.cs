@@ -34,9 +34,9 @@ namespace Admin_Portal.Data
             return GetItems<Admin>(String.Format(sql, field), new { search = ops});
         }
 
-        public Admin GetAdmin(string Email)
+        public Admin GetAdmin(string name)
         {
-            return GetItems<Admin>("SELECT * FROM admin WHERE Email = @Email", new { Email = Email }).FirstOrDefault();
+            return GetItems<Admin>("SELECT * FROM admin WHERE Email = @name", new { name = name }).FirstOrDefault();
         }
 
         public Admin GetAdmin(int id)

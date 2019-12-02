@@ -35,13 +35,18 @@ namespace Admin_Portal.Data
             return GetItems<Link>(String.Format(sql, field), new { search = ops});
         }
 
-        public IEnumerable<Link> ListLinks (string op, IPrincipal user)
+        public IEnumerable<Link> ListLinks (string admintype)
         {
-            var sql = "SELECT * FROM links WHERE {0} LIKE @search";
-            var field = "Link_Type";
-            var searchtext = (user as Admin_Portal.Data.Admin).Admin_Type;
-            var ops = op == "Starts With" ? searchtext + "%" : op == "Contains" ? "%" + searchtext + "%" : "%" + searchtext;
-            return GetItems<Link>(String.Format(sql, field), new { search = ops });
+            if (admintype == "Super")
+            {
+                var sql = "SELECT * FROM links";
+                return GetItems<Link>(String.Format(sql));
+            }
+            else
+            {
+                var sql = "SELECT * FROM links WHERE Link_Type = @admintype OR Link_Type = @General";
+                return GetItems<Link>(String.Format(sql));
+            }
         }
 
         public Link GetLink(int id)
@@ -49,9 +54,9 @@ namespace Admin_Portal.Data
             return GetItems<Link>("SELECT * FROM links WHERE LinkID = @id", new { id = id }).FirstOrDefault();
         }
 
-        public Link GetLink(string Link_Name)
+        public Link GetLink(string name)
         {
-            return GetItems<Link>("SELECT * FROM links WHERE Link_Name = @Link_Name", new { Link_Name = Link_Name }).FirstOrDefault();
+            return GetItems<Link>("SELECT * FROM links WHERE Link_Name = @name", new { name = name }).FirstOrDefault();
         }
 
         public void SaveLink(Link link)

@@ -200,7 +200,7 @@
     <Content Include="Views\Links\Create.cshtml" />
     <Content Include="Views\Links\Edit.cshtml" />
     <Content Include="Views\Links\Index.cshtml" />
-    <Content Include="Views\Links\Redirects.cshtml" />
+    <Content Include="Views\Links\Redirect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

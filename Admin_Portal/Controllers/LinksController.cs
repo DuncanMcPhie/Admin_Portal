@@ -16,18 +16,19 @@ namespace Admin_Portal.Controllers
             return View(links);
         }
 
+        public ActionResult Redirect()
+        {
+            var admintype = (User as Admin_Portal.Data.Admin).Admin_Type;
+            ViewBag.Message = "Your links page.";
+            var links = lrepository.ListLinks(admintype);
+            return View(links);
+        }
+
         public ActionResult Search(string searchtype, string searchop, string searchtxt)
         {
             ViewBag.FromSearch = true;
             var links = lrepository.SearchLinks(searchtype, searchop, searchtxt);
             return View("Index", links);
-        }
-
-        public ActionResult List(IPrincipal user)
-        {
-            ViewBag.Redirects = true;
-            var links = lrepository.ListLinks("Starts With", user);
-            return View("Redirects", links);
         }
 
         public ActionResult Edit(int id)

@@ -36,13 +36,20 @@
                                 <ul class="dropdown-menu">
                                     <li>@Html.ActionLink("Create Link", "Create", "Links")</li>
                                     <li>@Html.ActionLink("Links List", "Index", "Links")</li>
-                                    <li>@Html.ActionLink("Redirects", "Redirect", "Links")</li>
                                 </ul>
                             </li>
                         </ul>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Links <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Redirects", "Redirect", "Links")</li>
+                                </ul>
+                            </li>
+                        </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, @((User as Admin_Portal.Data.Admin).Admin_Type) Admin<span class="caret"></span></a>
@@ -56,7 +63,7 @@
                     else
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li>@Html.ActionLink("Sign In", "Index", "Login")</li>
+                            <li>@Html.ActionLink("Redirects", "Redirect", "Links")</li>
                         </ul>
                     }
                 </div>
