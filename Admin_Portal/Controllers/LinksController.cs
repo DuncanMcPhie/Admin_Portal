@@ -16,7 +16,7 @@ namespace Admin_Portal.Controllers
             return View(links);
         }
 
-        public ActionResult Redirect()
+        public ActionResult linkAccess()
         {
             var admintype = (User as Admin_Portal.Data.Admin).Admin_Type;
             ViewBag.Message = "Your links page.";
@@ -38,7 +38,7 @@ namespace Admin_Portal.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Link link, FormCollection collection)
+        public ActionResult Edit(Link link)
         {
             lrepository.SaveLink(link);
             return RedirectToAction("Index");

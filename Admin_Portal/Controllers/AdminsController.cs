@@ -32,6 +32,10 @@ namespace Admin_Portal.Controllers
         public ActionResult Edit(Admin admin, FormCollection collection)
         {
             var password = collection["NewPassword"];
+            if(!string.IsNullOrEmpty(password))
+            {
+                admin.Password = password;
+            }
             arepository.SaveAdmin(admin);
             return RedirectToAction("Index");
         }
@@ -48,5 +52,19 @@ namespace Admin_Portal.Controllers
             arepository.AddAdmin(admin);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Signup()
+        {
+            return View(new Admin());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Signup(Admin admin)
+        {
+            arepository.AddTempAdmin(admin);
+            return RedirectToAction("Index");
+        }
+
     }
 }

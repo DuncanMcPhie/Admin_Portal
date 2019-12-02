@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Admin_Portal.Data.Link>
 
 @{
-    ViewBag.Title = "Redirect";
+    ViewBag.Title = "linkAccess";
 }
 
 <style type="text/css">
@@ -45,7 +45,7 @@
                         @Html.DisplayFor(modelItem => item.Link_Type)
                     </th>
                     <td>
-                        @Html.ActionLink("Redirect", "Index", "Login", new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Redirect", "linkAccess", "Links", new { @class = "btn btn-primary" })
                     </td>
                 </tr>
             }

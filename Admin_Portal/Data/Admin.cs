@@ -14,9 +14,8 @@ namespace Admin_Portal.Data
         string _password = "";
         IPrincipal _principal;
 
-
-        [Required(ErrorMessage = "Admin ID is required")]
-        public string AdminID { get; set; }
+        [Required(ErrorMessage = "Email Address is required")]
+        public int AdminID { get; set; }
 
         [Required(ErrorMessage = "Email Address is required")]
         public string Email { get; set; }
@@ -37,7 +36,7 @@ namespace Admin_Portal.Data
         public IIdentity Identity => _principal.Identity;
 
         [JsonIgnore]
-        public string Name => AdminID; // Identity.Name;
+        public string Name => Email; // Identity.Name;
 
         public void Attach(IPrincipal existingPrincipal)
         {

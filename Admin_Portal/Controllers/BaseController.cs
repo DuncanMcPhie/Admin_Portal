@@ -27,7 +27,7 @@ namespace Admin_Portal.Controllers
 
                 if(admin == null)
                 {
-                    admin = new Admin { AdminID = "00000", Admin_Type = "Unknown" };
+                    admin = new Admin { Email = "Unknown", Admin_Type = "Unknown" };
                 }
 
                 admin.Attach(currentAdmin);

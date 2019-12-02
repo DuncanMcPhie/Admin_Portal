@@ -65,6 +65,15 @@ namespace Admin_Portal.Data
             Execute(sql, admin);
         }
 
+        public void AddTempAdmin(Admin admin)
+        {
+            var sql = @"
+            INSERT admin (Email, Password, Admin_Type)
+            VALUES (@Email, @Password, 'Temp')";
+
+            Execute(sql, admin);
+        }
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public IEnumerable<T> GetItems<T>(string sql, object parms = null)

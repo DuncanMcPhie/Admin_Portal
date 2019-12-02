@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using System;
-using System.Security.Principal;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,7 +43,7 @@ namespace Admin_Portal.Data
             }
             else
             {
-                var sql = "SELECT * FROM links WHERE Link_Type = @admintype OR Link_Type = @General";
+                var sql = "SELECT * FROM links WHERE Link_Type = @admintype OR Link_Type = 'General'";
                 return GetItems<Link>(String.Format(sql));
             }
         }

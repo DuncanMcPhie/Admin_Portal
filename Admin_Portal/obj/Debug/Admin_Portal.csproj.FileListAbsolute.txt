@@ -78,3 +78,4 @@ C:\Users\Dunca\Documents\GitHub\Admin_Portal\Admin_Portal\bin\Microsoft.CodeDom.
 C:\Users\Dunca\Documents\GitHub\Admin_Portal\Admin_Portal\obj\Debug\Admin_Portal.csproj.CopyComplete
 C:\Users\Dunca\Documents\GitHub\Admin_Portal\Admin_Portal\obj\Debug\Admin_Portal.dll
 C:\Users\Dunca\Documents\GitHub\Admin_Portal\Admin_Portal\obj\Debug\Admin_Portal.pdb
+C:\Users\Dunca\Documents\GitHub\Admin_Portal\Admin_Portal\obj\Debug\Admin_Portal.csprojAssemblyReference.cache
