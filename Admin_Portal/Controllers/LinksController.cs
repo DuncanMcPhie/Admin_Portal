@@ -4,7 +4,6 @@ using System.Security.Principal;
 
 namespace Admin_Portal.Controllers
 {
-    [Authorize(Roles = "Super")]
     public class LinksController : BaseController
     {
         // GET: Links
@@ -16,9 +15,9 @@ namespace Admin_Portal.Controllers
             return View(links);
         }
 
-        public ActionResult linkAccess()
+        public ActionResult LinkAccess()
         {
-            var admintype = (User as Admin_Portal.Data.Admin).Admin_Type;
+            var admintype = ((User as Admin_Portal.Data.Admin).Admin_Type);
             ViewBag.Message = "Your links page.";
             var links = lrepository.ListLinks(admintype);
             return View(links);

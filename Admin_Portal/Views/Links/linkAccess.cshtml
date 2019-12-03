@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Admin_Portal.Data.Link>
 
 @{
-    ViewBag.Title = "linkAccess";
+    ViewBag.Title = "LinkAccess";
 }
 
 <style type="text/css">
@@ -33,21 +33,23 @@
                 </th>
                 <th></th>
             </tr>
-
-            @foreach (var item in Model)
+            @if(Model != null)
             {
+                foreach (var item in Model)
+                {
                 
-                <tr class="white">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Link_Name)
-                    </td>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.Link_Type)
-                    </th>
-                    <td>
-                        @Html.ActionLink("Redirect", "linkAccess", "Links", new { @class = "btn btn-primary" })
-                    </td>
-                </tr>
+                    <tr class="white">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Link_Name)
+                        </td>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.Link_Type)
+                        </th>
+                        <td>
+                            @Html.ActionLink("Redirect", "LinkAccess", "Links", new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
             }
 
         </table>

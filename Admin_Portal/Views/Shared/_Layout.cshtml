@@ -46,13 +46,14 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Links <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li>@Html.ActionLink("Outside Links", "linkAccess", "Links")</li>
+                                    <li>@Html.ActionLink("Outside Links", "LinkAccess", "Links")</li>
                                 </ul>
                             </li>
                         </ul>
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
+
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hello, @((User as Admin_Portal.Data.Admin).Admin_Type) Admin<span class="caret"></span></a>
@@ -66,14 +67,10 @@
                     else
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li role="separator" class="divider"></li>
-                                    <li>@Html.ActionLink("Sign In", "Index", "Login")</li>
-                                    <li>@Html.ActionLink("Sign Up", "Signup", "Admins")</li>
-                                </ul>
-                            </li>
+                            <li>@Html.ActionLink("Sign In", "Index", "Login")</li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("Sign Up", "Signup", "Admins")</li>
                         </ul>
                     }
                 </div>

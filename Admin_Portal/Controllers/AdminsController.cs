@@ -3,7 +3,6 @@ using Admin_Portal.Data;
 
 namespace Admin_Portal.Controllers
 {
-    [Authorize(Roles = "Super")]
     public class AdminsController : BaseController
     {
         // GET: Admins
@@ -63,7 +62,7 @@ namespace Admin_Portal.Controllers
         public ActionResult Signup(Admin admin)
         {
             arepository.AddTempAdmin(admin);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }

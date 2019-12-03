@@ -43,8 +43,7 @@ namespace Admin_Portal.Data
             }
             else
             {
-                var sql = "SELECT * FROM links WHERE Link_Type = @admintype OR Link_Type = 'General'";
-                return GetItems<Link>(String.Format(sql));
+                return GetItems<Link>("SELECT * FROM links WHERE Link_Type = 'General' OR Link_Type = @admintype", new { admintype = admintype });
             }
         }
 
